@@ -33,7 +33,9 @@ module Formtastic
       def to_html
         input_wrapping do
           label_html <<
-          builder.password_field(method, input_html_options)
+          bootstrap_control_wrapper do
+            builder.password_field(method, input_html_options)
+          end
         end
       end
     end
