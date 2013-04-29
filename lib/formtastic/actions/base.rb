@@ -21,7 +21,7 @@ module Formtastic
       end
       
       def wrapper(&block)
-        template.content_tag(:li, 
+        template.content_tag(:div, 
           template.capture(&block), 
           wrapper_html_options
         )
@@ -47,7 +47,7 @@ module Formtastic
       end
       
       def default_wrapper_classes
-        ["action", "#{options[:as]}_action"]
+        ["form-actions", "#{options[:as]}_action"]
       end
       
       def wrapper_classes_from_options

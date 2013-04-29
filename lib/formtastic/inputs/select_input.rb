@@ -145,8 +145,9 @@ module Formtastic
       def to_html
         input_wrapping do
           hidden_input <<
-          label_html <<
-          (options[:group_by] ? grouped_select_html : select_html)
+          label_html << bootstrap_control_wrapper do
+            (options[:group_by] ? grouped_select_html : select_html)
+          end
         end
       end
 
@@ -198,10 +199,8 @@ module Formtastic
       def extra_input_html_options
         {
           :multiple => multiple?,
-          :name => (multiple? && Rails::VERSION::MAJOR == 3) ? input_html_options_name_multiple : input_html_options_name
+          :name => multiple? ? input_html_options_name_multiple : input_html_options_name
         }
-        
-        
       end
       
       def input_html_options_name

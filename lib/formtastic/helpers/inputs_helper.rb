@@ -289,17 +289,17 @@ module Formtastic
           if html_options[:for] # Nested form
             inputs_for_nested_attributes(*(args << html_options), &block)
           elsif block_given?
-            field_set_and_list_wrapping(*(args << html_options), &block)
+            fieldset_wrapping(*(args << html_options), &block)
           else
             legend = args.shift if args.first.is_a?(::String)
             args = default_columns_for_object if @object && args.empty?
             contents = fieldset_contents_from_column_list(args)
             args.unshift(legend) if legend.present?
-            field_set_and_list_wrapping(*((args << html_options) << contents))
+            fieldset_wrapping(*((args << html_options) << contents))
           end
         end
         
-        out = template.content_tag(:li, out, :class => "input") if wrap_it
+        #out = template.content_tag(:li, out, :class => "input") if wrap_it
         @already_in_an_inputs_block = wrap_it
         out
       end

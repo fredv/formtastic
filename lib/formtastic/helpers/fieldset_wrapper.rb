@@ -21,7 +21,7 @@ module Formtastic
       #   f.inputs "My little legend", :title, :body, :author   # Explicit legend string => "My little legend"
       #   f.inputs :my_little_legend, :title, :body, :author    # Localized (118n) legend with I18n key => I18n.t(:my_little_legend, ...)
       #   f.inputs :title, :body, :author                       # First argument is a column => (no legend)
-      def field_set_and_list_wrapping(*args, &block) #:nodoc:
+      def fieldset_wrapping(*args, &block) #:nodoc:
         contents = args.last.is_a?(::Hash) ? '' : args.pop.flatten
         html_options = args.extract_options!
 
@@ -38,7 +38,7 @@ module Formtastic
 
         legend = field_set_legend(html_options)
         fieldset = template.content_tag(:fieldset,
-          Formtastic::Util.html_safe(legend) << template.content_tag(:ol, Formtastic::Util.html_safe(contents)),
+          Formtastic::Util.html_safe(legend) << Formtastic::Util.html_safe(contents),
           html_options.except(:builder, :parent, :name)
         )
 
@@ -72,7 +72,7 @@ module Formtastic
         return duck + 1 if duck.is_a?(Fixnum)
         
         # First try to extract key from duck Hash, then try child
-        (duck[key] || duck[child]).to_i + 1
+        i = (duck[key] || duck[child]).to_i + 1
       end
 
     end

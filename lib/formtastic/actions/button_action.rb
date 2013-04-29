@@ -61,9 +61,9 @@ module Formtastic
       def to_html
         wrapper do
           if template.respond_to?(:button_tag)
-            template.button_tag(text, button_html)
+            template.button_tag(text, button_html, class: 'btn')
           else
-            template.content_tag(:button, text, button_html)
+            template.content_tag(:button, text, button_html, class: 'btn')
           end
         end
       end

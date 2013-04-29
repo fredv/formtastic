@@ -72,9 +72,7 @@ module Formtastic
       
       # TODO reset_action class?
       def to_html
-        wrapper do
-          template.link_to(text, url, button_html)
-        end
+        template.link_to(text, url, button_html, class: 'btn')
       end
       
       def url

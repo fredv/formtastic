@@ -65,9 +65,6 @@ module Formtastic
       # @example Change the labels for each fragment
       #   <%= f.input :publish_at, :as => :date_select, :labels => { :year => "Y", :month => "M", :day => "D" }  %>
       #
-      # @example Suppress the labels for all fragments
-      #   <%= f.input :publish_at, :as => :date_select, :labels => false  %>
-      #
       # @example Skip a fragment (defaults to 1, skips all following fragments)
       #   <%= f.input :publish_at, :as => :datetime_select, :discard_minute => true  %>
       #   <%= f.input :publish_at, :as => :datetime_select, :discard_hour => true  %>
@@ -133,10 +130,8 @@ module Formtastic
         end
         
         def fragment_label(fragment)
-          labels_from_options = options.key?(:labels) ? options[:labels] : {}
-          if !labels_from_options
-            ''
-          elsif labels_from_options.key?(fragment)
+          labels_from_options = options[:labels] || {}
+          if labels_from_options.key?(fragment)
             labels_from_options[fragment]
           else
             ::I18n.t(fragment.to_s, :default => fragment.to_s.humanize, :scope => [:datetime, :prompts])
@@ -188,11 +183,8 @@ module Formtastic
         
         def i18n_date_fragments
           order = ::I18n.t(:order, :scope => [:date])
-          if order.is_a?(Array)
-            order.map &:to_sym
-          else
-            nil
-          end
+          order = nil unless order.is_a?(Array)
+          order
         end
         
         def fragments_wrapping(&block)
