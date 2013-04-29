@@ -59,7 +59,7 @@ module Formtastic
       include Buttonish
       
       def to_html
-        builder.submit(text, button_html.merge(class: 'btn btn-primary'))
+        builder.submit(text, button_html.merge(class: 'btn-primary'))
       end
     end
   end

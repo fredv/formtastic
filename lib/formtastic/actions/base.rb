@@ -92,7 +92,7 @@ module Formtastic
       end
       
       def extra_button_html_options
-        {}
+        { class: 'btn' }
       end
       
       def default_button_html
