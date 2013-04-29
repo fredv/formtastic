@@ -4,7 +4,7 @@ module Formtastic
       module Choices
 
         def choices_wrapping(&block)
-          template.text_node template.capture(&block)
+          template.capture(&block)
         end
 
         def choices_wrapping_html_options
