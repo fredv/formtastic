@@ -4,10 +4,7 @@ module Formtastic
       module Choices
 
         def choices_wrapping(&block)
-          template.content_tag(:fieldset,
-            template.capture(&block),
-            choices_wrapping_html_options
-          )
+          text_node template.capture(&block)
         end
 
         def choices_wrapping_html_options
@@ -87,10 +84,7 @@ module Formtastic
 
         def legend_html
           if render_label?
-            template.content_tag(:legend,
-              template.content_tag(:label, label_text),
-              label_html_options.merge(:class => "label")
-            )
+            template.content_tag(:label, label_text)
           else
             "".html_safe
           end
