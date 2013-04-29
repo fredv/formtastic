@@ -1,4 +1,5 @@
 module Formtastic
+
   module Inputs
 
     # Outputs a simple `<label>` with a `<textarea>` wrapped in the standard
@@ -39,7 +40,9 @@ module Formtastic
       def to_html
         input_wrapping do
           label_html <<
-          builder.text_area(method, input_html_options)
+          bootstrap_control_wrapper do
+            builder.text_area(method, input_html_options)
+          end
         end
       end
     
