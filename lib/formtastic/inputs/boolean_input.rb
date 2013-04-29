@@ -44,11 +44,13 @@ module Formtastic
       end
 
       def label_with_nested_checkbox
-        builder.label(
-          method,
-          label_text_with_embedded_checkbox,
-          label_html_options
-        )
+        template.content_tag :div, class: 'controls' do
+          builder.label(
+            method,
+            label_text_with_embedded_checkbox,
+            label_html_options
+          )
+        end
       end
       
       # TODO: why are we merging `input_html_options` and then making some of the irrelevant ones `nil`?
