@@ -12,7 +12,7 @@ module Formtastic
         end
 
         def choices_group_wrapping(&block)
-          template.content_tag(:ol,
+          template.content_tag(:div,
             template.capture(&block),
             choices_group_wrapping_html_options
           )
@@ -23,7 +23,7 @@ module Formtastic
         end
 
         def choice_wrapping(html_options, &block)
-          template.content_tag(:li,
+          template.content_tag(:div,
             template.capture(&block),
             html_options
           )

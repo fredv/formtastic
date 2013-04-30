@@ -125,6 +125,7 @@ module Formtastic
       
       def to_html
         input_wrapping do
+          bootstrap_control_wrapper do
           choices_wrapping do
             legend_html <<
             choices_group_wrapping do
@@ -135,6 +136,7 @@ module Formtastic
               }.join("\n").html_safe
             end
           end
+        end
         end
       end
 
