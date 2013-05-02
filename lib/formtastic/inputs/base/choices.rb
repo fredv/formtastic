@@ -84,7 +84,7 @@ module Formtastic
 
         def legend_html
           if render_label?
-            template.content_tag(:label, label_text)
+            template.content_tag(:label, label_text, class: 'control-label')
           else
             "".html_safe
           end
