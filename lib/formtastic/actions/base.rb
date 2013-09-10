@@ -47,7 +47,7 @@ module Formtastic
       end
       
       def default_wrapper_classes
-        ["form-actions", "#{options[:as]}_action"]
+        ["#{options[:as]}_action"]
       end
       
       def wrapper_classes_from_options

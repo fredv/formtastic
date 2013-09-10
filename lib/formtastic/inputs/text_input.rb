@@ -33,16 +33,14 @@ module Formtastic
       def input_html_options
         { 
           :cols => builder.default_text_area_width,
-          :rows => builder.default_text_area_height
+          :rows => builder.default_text_area_height,
+          :class => 'form-control',
         }.merge(super)
       end
       
       def to_html
         input_wrapping do
-          label_html <<
-          bootstrap_control_wrapper do
-            builder.text_area(method, input_html_options)
-          end
+          label_html << builder.text_area(method, input_html_options)
         end
       end
     

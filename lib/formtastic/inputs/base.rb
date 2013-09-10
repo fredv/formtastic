@@ -21,7 +21,7 @@ module Formtastic
       end
 
       def bootstrap_control_wrapper(&block)
-        template.content_tag(:div, class: 'controls', &block)
+        template.capture(&block)
       end
       
       # Usefull for deprecating options.

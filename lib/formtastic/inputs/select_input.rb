@@ -199,7 +199,8 @@ module Formtastic
       def extra_input_html_options
         {
           :multiple => multiple?,
-          :name => multiple? ? input_html_options_name_multiple : input_html_options_name
+          :name => multiple? ? input_html_options_name_multiple : input_html_options_name,
+          :class => 'form-control'
         }
       end
       

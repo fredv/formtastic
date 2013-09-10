@@ -33,7 +33,7 @@ module Formtastic
         def wrapper_classes
           classes = wrapper_classes_raw
           classes << as
-          classes << "control-group"
+          classes << "form-group"
           classes << "error" if errors?
           classes << "optional" if optional?
           classes << "required" if required?

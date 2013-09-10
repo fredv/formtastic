@@ -6,9 +6,7 @@ module Formtastic
         # @abstract Override this method in your input class to describe how the input should render itself.
         def to_html
           input_wrapping do
-            label_html << bootstrap_control_wrapper do
-              builder.text_field(method, input_html_options)
-            end
+            label_html << builder.text_field(method, input_html_options)
           end
         end
         
@@ -16,7 +14,8 @@ module Formtastic
         def input_html_options
           {
             :maxlength => maxlength,
-            :size => size
+            :size => size,
+            :class => 'form-control'
           }.merge(super)
         end
         

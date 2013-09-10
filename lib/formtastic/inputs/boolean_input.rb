@@ -44,7 +44,7 @@ module Formtastic
       end
 
       def label_with_nested_checkbox
-        template.content_tag :div, class: 'controls' do
+        template.content_tag :div, class: 'form-group' do
           builder.label(
             method,
             label_text_with_embedded_checkbox,

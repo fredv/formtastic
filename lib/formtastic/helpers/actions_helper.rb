@@ -146,14 +146,14 @@ module Formtastic
       # @todo document i18n keys
       def actions(*args, &block)
         html_options = args.extract_options!
-        html_options[:class] ||= "form-actions"
+        html_options[:class] ||= ""
 
         if block_given?
-          template.content_tag(:div, { class: 'form-actions' }, &block)
+          template.capture(&block)
         else
           args = default_actions if args.empty?
           contents = args.map { |action_name| action(action_name) }
-          template.content_tag(:div, contents, { class: 'form-actions' })
+          template.concat(contents)
         end
       end
 
